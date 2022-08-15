@@ -16,7 +16,7 @@ const gameBoard = (() => {
     let gameMode = 0;
     let gameOver = false;
     let winner = "";
-
+    
     // Check win conditions
     function checkRows() {
         let row1 = boardArray[0] === boardArray[1] && boardArray[0] === boardArray[2] && boardArray[0] !== "";
@@ -77,10 +77,8 @@ const gameBoard = (() => {
 
     // Create board, Add event listener, if click pass current player sign
     const boardCreate = (() => {
-        // Select all divs.
+        // Incase restart clicked, delete all divs.
         const selectAllDiv = document.querySelectorAll(".field")
-
-        // Delete divs incase restart button pressed.
         selectAllDiv.forEach(box => {
             player1.turn = true;
             box.remove();
@@ -89,7 +87,7 @@ const gameBoard = (() => {
             displayController.changeHeader();
         })
 
-        //Create divs
+        //Create divs.
         for (let i = 0; i < 9; i++) {
             const div = document.createElement("div");
             div.classList.add("field");
@@ -97,10 +95,12 @@ const gameBoard = (() => {
             const container = document.querySelector(".gameboard");
             container.appendChild(div);
         }
+        // Select all div
+        const allDiv = document.querySelectorAll(".field");
 
         // Player vs Player
         if (gameBoard.gameMode == 1) {
-            selectAllDiv.forEach(div => {
+            allDiv.forEach(div => {
                 div.addEventListener("click", (e) => {
                     if (player1.turn == true && boardArray[div.dataset.index] == "") {
                         boardArray[div.dataset.index] = player1.mark;
@@ -135,7 +135,7 @@ const gameBoard = (() => {
         }
         //Player vs AI
         if (gameBoard.gameMode == 2) {
-            selectAllDiv.forEach(div => {
+            allDiv.forEach(div => {
                 div.addEventListener("click", (e) => {
                     if (player1.turn == true && boardArray[div.dataset.index] == "") {
                         boardArray[div.dataset.index] = player1.mark;
@@ -168,7 +168,6 @@ const gameBoard = (() => {
 // Module for display controller
 
 const displayController = (() => {
-
     // Select necessary things
     const playWithAi = document.querySelector(".playWithAi");
     const playWithPlayer = document.querySelector(".playWithPlayer");
@@ -177,7 +176,7 @@ const displayController = (() => {
     const mainMenu = document.querySelector("#mainMenu");
     const restart = document.querySelector(".restart");
 
-    // Add event listener to play buttons
+    // Add event listener to main buttons
     playWithAi.addEventListener("click", (e) => {
         gameBoard.player1.turn = true;
         changeHeader()
@@ -195,7 +194,7 @@ const displayController = (() => {
         gameBoard.boardCreate()
     })
 
-    // Function for changing header to which player's turn
+    // Function to change header to which player's turn.
     function changeHeader() {
         if(gameBoard.player1.turn === true) {
             headerText.innerHTML = "Player 1's Turn"
@@ -220,12 +219,12 @@ const displayController = (() => {
         }
     }
 
-    // If main menu button clicked reload the page.
+    // If main menu clicked, reload the page
     mainMenu.addEventListener("click", (e) => {
         window.location.reload();
     })
 
-    // If restart button clicked reload the page with same game mode
+    // If restart clicked reload the page with the same game mode.
     restart.addEventListener("click", (e) => {
         gameBoard.gameMode = gameBoard.gameMode;
         gameBoard.player1.turn = false;
