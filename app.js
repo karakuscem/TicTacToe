@@ -211,6 +211,7 @@ const displayController = (() => {
     function endGame() {
         headerText.style.display = "none"
         headerText2.style.display = "flex"
+        restart.style.display = "flex";
         if(gameBoard.winner == "Tie") {
             headerText2.innerHTML = `${gameBoard.winner}`
         }

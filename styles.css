@@ -104,3 +104,9 @@ h1 {
 .field:hover {
     background-color:  rgb(240, 239, 239);
 }
+
+.restart {
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
