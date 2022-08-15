@@ -110,3 +110,107 @@ h1 {
     align-items: center;
     justify-content: center;
 }
+
+@media (max-width: 670px){
+    body {
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        height: 50vh;
+        margin-top: 50px;
+        background-color: var(--bg-primary);
+    }
+    
+    .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 100px;
+    }
+    
+    .menu .headerText2 {
+        display: none;
+    }
+    
+    h1 {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+    
+    .choices {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .playWithAi,
+    .playWithPlayer {
+        width: 8rem;
+        height: 2rem;
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid black;
+        background-color: var(--bg-secondary);
+    }
+    
+    .playWithAi:active,
+    .playWithPlayer:active {
+        background-color: black;
+        color: var(--text-primary);
+    }
+    
+    
+    .btn {
+        width: 10rem;
+        height: 2rem;
+        border: 1px solid gray;
+        border-radius: 15px;
+        font-size: 1rem;
+        cursor: pointer;
+        background-color: var(--bg-secondary);
+    }
+    
+    .btn:active {
+        background-color: black;
+        color: var(--text-primary);
+    }
+    
+    .afterMenu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 100px;
+        gap: 10px;
+    }
+    
+    
+    .gameboard {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+    }
+    
+    .field {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        background-color: var(--bg-secondary);
+        font-size: 100px;
+        text-align: center;
+        cursor: pointer;
+        user-select: none;
+    }
+      
+    .field:hover {
+        background-color:  rgb(240, 239, 239);
+    }
+    
+    .restart {
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
+}
